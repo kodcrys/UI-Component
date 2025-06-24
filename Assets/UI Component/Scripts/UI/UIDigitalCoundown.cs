@@ -28,7 +28,6 @@ public class UIDigitalCoundown : UICountdown
             yield return wait1s;
 
             time = RemindTime;
-
             UpdateCountdownTxt(time);
 
             if (time <= 0)

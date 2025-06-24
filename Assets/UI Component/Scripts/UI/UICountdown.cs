@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,24 +25,22 @@ public class UICountdown : MonoBehaviour
         }
     }
 
-    public void SetUpAndRun(long startTime, long cdDuration, bool isAdditive = false)
+    public void SetUpAndRun(long cdDuration, bool isAdditive = false)
     {
         if (isAdditive)
             this.cdDuration += cdDuration;
         else
             this.cdDuration = cdDuration;
-        this.startTime = startTime;
 
         Run();
     }
 
-    public void SetUp(long startTime, long cdDuration, bool isAdditive = false)
+    public void SetUp(long cdDuration, bool isAdditive = false)
     {
         if (isAdditive)
             this.cdDuration += cdDuration;
         else
             this.cdDuration = cdDuration;
-        this.startTime = startTime;
 
         long time = RemindTime;
         UpdateCountdownTxt(time);
@@ -49,7 +48,13 @@ public class UICountdown : MonoBehaviour
 
     public virtual void Run()
     {
-        
+        if (RemindTime <= 0)
+        {
+            if (useUtcTime)
+                startTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            else
+                startTime = DateTimeOffset.Now.ToUnixTimeSeconds();
+        }
     }
 
 

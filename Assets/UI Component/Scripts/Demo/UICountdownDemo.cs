@@ -1,11 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 public class UICountdownDemo : MonoBehaviour
 {
+    [SerializeField] private TMP_InputField countdownInputField;
     [SerializeField] private UIDigitalCoundown uiDigitalCoundown;
 
-    public void Start()
+    public void StartCountdown()
     {
-        ///uiDigitalCoundown.SetUpAndRun()
+        int countdown = int.Parse(countdownInputField.text);
+        uiDigitalCoundown.SetUpAndRun(countdown);
     }
 }
