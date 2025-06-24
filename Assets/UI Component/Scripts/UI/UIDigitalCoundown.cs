@@ -23,12 +23,16 @@ public class UIDigitalCoundown : UICountdown
     {
         long time = RemindTime;
 
+        if(countdownTxt != null)
+            UpdateCountdownTxt(time);
+
         while (time > 0)
         {
             yield return wait1s;
 
             time = RemindTime;
-            UpdateCountdownTxt(time);
+            if (countdownTxt != null)
+                UpdateCountdownTxt(time);
 
             if (time <= 0)
             {

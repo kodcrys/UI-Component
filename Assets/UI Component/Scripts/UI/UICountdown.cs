@@ -25,7 +25,7 @@ public class UICountdown : MonoBehaviour
         }
     }
 
-    public void SetUpAndRun(long cdDuration, bool isAdditive = false)
+    public virtual void SetUpAndRun(long cdDuration, bool isAdditive = false)
     {
         if (isAdditive)
             this.cdDuration += cdDuration;
@@ -35,15 +35,12 @@ public class UICountdown : MonoBehaviour
         Run();
     }
 
-    public void SetUp(long cdDuration, bool isAdditive = false)
+    public virtual void SetUp(long cdDuration, bool isAdditive = false)
     {
         if (isAdditive)
             this.cdDuration += cdDuration;
         else
             this.cdDuration = cdDuration;
-
-        long time = RemindTime;
-        UpdateCountdownTxt(time);
     }
 
     public virtual void Run()
@@ -65,8 +62,6 @@ public class UICountdown : MonoBehaviour
 
     protected virtual void UpdateCountdownTxt(long timeCd)
     {
-        if (countdownTxt == null) return;
-
         switch (timeFormat)
         {
             case TimeFormat.ss:
