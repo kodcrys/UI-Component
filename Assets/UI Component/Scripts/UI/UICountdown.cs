@@ -25,6 +25,17 @@ public class UICountdown : MonoBehaviour
         }
     }
 
+    protected float RemindTimePrecise
+    {
+        get
+        {
+            if(useUtcTime)
+                return startTime.TimeRemainUtcPrecise(cdDuration);
+            else
+                return startTime.TimeRemainLocalPrecise(cdDuration);
+        }
+    }
+
     public virtual void SetUpAndRun(long cdDuration, bool isAdditive = false)
     {
         if (isAdditive)

@@ -90,6 +90,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dc601523b4f7e409e99950a32d6a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownTxt: {fileID: 1775996426945595224}
+  timeFormat: 1
+  useUtcTime: 0
+  onCountdownDone:
+    m_PersistentCalls:
+      m_Calls: []
+  maskCdImg: {fileID: 2856064809630735449}
 --- !u!1 &3803256921448762156
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ public static class DateTimeExtensions
         long timeRemaining = cdDuration - timeElapsed;
 
         if (timeRemaining < 0) timeRemaining = 0;
-
         return timeRemaining;
     }
 
@@ -19,7 +18,26 @@ public static class DateTimeExtensions
         long timeRemaining = cdDuration - timeElapsed;
 
         if (timeRemaining < 0) timeRemaining = 0;
+        return timeRemaining;
+    }
 
+    public static float TimeRemainUtcPrecise(this long unixTimeStampUtcSave, float cdDuration)
+    {
+        double now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() / 1000.0; // milisecond -> second
+        double elapsed = now - unixTimeStampUtcSave;
+        
+        float timeRemaining = (float)(cdDuration - elapsed);
+        if (timeRemaining < 0) timeRemaining = 0;
+        return timeRemaining;
+    }
+
+    public static float TimeRemainLocalPrecise(this long unixTimeStampLocalSave, float cdDuration)
+    {
+        double now = DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000.0; // milisecond -> second
+        double elapsed = now - unixTimeStampLocalSave;
+
+        float timeRemaining = (float)(cdDuration - elapsed);
+        if (timeRemaining < 0) timeRemaining = 0;
         return timeRemaining;
     }
 

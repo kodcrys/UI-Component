@@ -45,7 +45,7 @@ public class UIClassicCountdown : UICountdown
 
     private void UpdateMask()
     {
-        maskCdImg.fillAmount -= (1f / RemindTime) * Time.deltaTime;
+        maskCdImg.fillAmount = RemindTimePrecise / cdDuration;
 
         if (countdownTxt != null)
             UpdateCountdownTxt(RemindTime);
